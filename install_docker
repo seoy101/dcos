@@ -1,0 +1,51 @@
+#!/bin/bash
+
+# add docker repo and install docker
+cat > /etc/yum.repos.d/docker.repo << '__EOF__'
+[docker]
+name=Docker Repository - Centos $releasever
+baseurl=http://yum.dockerproject.org/repo/main/centos/$releasever
+enabled=1
+gpgcheck=1
+gpgkey=http://yum.dockerproject.org/gpg
+__EOF__
+ 
+yum install docker-engine -y
+yum clean all
+ 
+mkdir -p /etc/systemd/system/docker.service.d 
+ 
+cat > /etc/systemd/system/docker.service.d/override.conf << '__EOF__'
+[Service] 
+ExecStart= 
+ExecStart=/usr/bin/docker daemon --storage-driver=overlay $DOCKER_NETWORK_OPTIONS -H fd:// 
+__EOF__
+ 
+systemctl daemon-reload
+systemctl enable docker
+ 
+#systemctl start docker
+ 
+tee -a /etc/hosts << '__EOF__'
+ 
+192.168.1.160 mesos-boot
+ 
+192.168.1.161 mesos-master-01
+192.168.1.162 mesos-master-02
+192.168.1.163 mesos-master-03
+ 
+192.168.1.164 mesos-agent-01
+192.168.1.165 mesos-agent-02
+192.168.1.166 mesos-agent-03
+192.168.1.167 mesos-agent-04
+192.168.1.168 mesos-agent-05
+192.168.1.169 mesos-agent-06
+ 
+192.168.1.170 mesos-agent-07
+ 
+__EOF__
+ 
+yum install -y tar xz unzip curl ipset nfs-utils
+yum clean all
+ 
+groupadd nogroup
