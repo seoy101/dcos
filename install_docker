@@ -25,11 +25,6 @@ ExecStart=/usr/bin/docker daemon --storage-driver=overlay $DOCKER_NETWORK_OPTION
 __EOF__
  
 systemctl daemon-reload
-systemctl enable docker
- 
-#systemctl start docker
- 
-systemctl daemon-reload
 systemctl start docker
 
 systemctl enable docker
