@@ -1,7 +1,9 @@
 #!/bin/bash
 
 # add docker repo and install docker
-cat > /etc/yum.repos.d/docker.repo << '__EOF__'
+yum update
+
+at > /etc/yum.repos.d/docker.repo << '__EOF__'
 [dockerrepo]
 name=Docker Repository
 baseurl=https://yum.dockerproject.org/repo/main/centos/7/
