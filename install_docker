@@ -16,14 +16,6 @@ __EOF__
 yum install docker-engine -y
 yum clean all
 
-mkdir -p /etc/systemd/system/docker.service.d 
- 
-cat > /etc/systemd/system/docker.service.d/docker.conf << '__EOF__'
-[Service] 
-ExecStart= 
-ExecStart=/usr/bin/docker daemon --storage-driver=overlay $DOCKER_NETWORK_OPTIONS -H fd:// 
-__EOF__
- 
 systemctl daemon-reload
 systemctl start docker
 
