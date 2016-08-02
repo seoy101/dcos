@@ -4,6 +4,7 @@
 yum update
 
 cat > /etc/yum.repos.d/docker.repo << '__EOF__'
+
 [dockerrepo]
 name=Docker Repository
 baseurl=https://yum.dockerproject.org/repo/main/centos/7/
