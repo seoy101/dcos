@@ -28,12 +28,12 @@ systemctl enable docker
  
 tee -a /etc/hosts << '__EOF__'
  
-10.32.19.90   mesos-boot
+10.32.19.177  mesos-boot
  
-10.32.19.92   mesos-master-01
+10.32.19.93   mesos-master-01
 
-10.32.21.239  mesos-agent-01
-10.32.21.241  mesos-agent-02
+10.32.21.97   mesos-agent-01
+10.32.21.226  mesos-agent-02
 
 __EOF__
  
