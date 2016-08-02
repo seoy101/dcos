@@ -22,7 +22,7 @@ exhibitor_storage_backend: static
 ip_detect_filename: genconf/ip-detect
 master_discovery: static
 master_list:
-- 19.32.19.93
+- 175.158.15.45
 resolvers:
 - 8.8.4.4
 - 8.8.8.8
