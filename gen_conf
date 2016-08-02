@@ -1,0 +1,31 @@
+#!/bin/bash
+
+mkdir /opt/dcos-setup && cd /opt/dcos-setup && curl -O https://downloads.dcos.io/dcos/testing/master/dcos_generate_config.sh
+ 
+mkdir -p genconf
+ 
+cat > genconf/ip-detect << '__EOF__'
+#!/usr/bin/env bash
+set -o nounset -o errexit
+export PATH=/usr/sbin:/usr/bin:$PATH
+echo $(ip addr show eth0 | grep -Eo '[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}' | head -1)
+__EOF__
+ 
+chmod 755 genconf/ip-detect
+ 
+# your custom config file
+cat > genconf/config.yaml << '__EOF__'
+---
+bootstrap_url: http://mesos-boot:8888       
+cluster_name: dcos
+exhibitor_storage_backend: static
+ip_detect_filename: genconf/ip-detect
+master_discovery: static
+master_list:
+- 19.32.19.93
+resolvers:
+- 8.8.4.4
+- 8.8.8.8
+__EOF__
+ 
+bash dcos_generate_config.sh
