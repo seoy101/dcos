@@ -15,7 +15,7 @@ chmod 755 genconf/ip-detect
  
 # your custom config file
 cat > genconf/config.yaml << '__EOF__'
----
+
 bootstrap_url: http://211.249.63.201:8888       
 cluster_name: dcos
 exhibitor_storage_backend: static
