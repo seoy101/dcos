@@ -1,5 +1,6 @@
 #!/bin/bash
-
+#firewall disable
+systemctl stop firewalld && systemctl disable firewalld
 # add docker repo and install docker
 
 cat > /etc/yum.repos.d/docker.repo << '__EOF__'
