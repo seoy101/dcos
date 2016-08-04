@@ -1,7 +1,6 @@
 #!/bin/bash
 
 # add docker repo and install docker
-yum -y update
 
 cat > /etc/yum.repos.d/docker.repo << '__EOF__'
 
@@ -13,8 +12,15 @@ gpgcheck=1
 gpgkey=https://yum.dockerproject.org/gpg
 __EOF__
  
-yum install -y docker-engine-selinux-1.11.2-1.el7.centos
+yum -y update
+yum install -y docker-engine-1.11.2
+
+yum install -y yum-versionlock
+yum versionlock docker-engine
+
 yum clean all
+
+yum -y update
 
 systemctl daemon-reload
 systemctl start docker
