@@ -13,7 +13,7 @@ gpgcheck=1
 gpgkey=https://yum.dockerproject.org/gpg
 __EOF__
  
-yum install docker-engine-1.11 -y
+yum install -y docker-engine-selinux-1.11.2-1.el7.centos
 yum clean all
 
 systemctl daemon-reload
