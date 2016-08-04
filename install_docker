@@ -13,7 +13,7 @@ gpgcheck=1
 gpgkey=https://yum.dockerproject.org/gpg
 __EOF__
  
-yum install docker-engine -y
+yum install docker-engine-1.11 -y
 yum clean all
 
 systemctl daemon-reload
@@ -27,8 +27,8 @@ tee -a /etc/hosts << '__EOF__'
  
 175.158.15.45  mesos-master-01
 
-10.32.19.65     mesos-agent-01
-10.32.20.85     mesos-agent-02
+10.32.20.73     mesos-agent-01
+10.32.19.86     mesos-agent-02
 
 __EOF__
  

@@ -8,6 +8,8 @@ sed -i 's/RSAAuthentication/#RSAAuthentication/' /etc/ssh/sshd_config
 sed -i 's/X11Forwarding/#X11Forwarding/' /etc/ssh/sshd_config
 echo "Port 1025" >> /etc/ssh/sshd_config
 
+systemctl restart sshd
+
 yum install -y policycoreutils-python
 
 semanage port -a -t ssh_port_t -p tcp 1025
