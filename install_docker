@@ -24,11 +24,6 @@ ExecStart=
 ExecStart=/usr/bin/docker daemon --storage-driver=overlay -H fd:// 
 __EOF__
  
-systemctl daemon-reload
-systemctl enable docker
- 
-#systemctl start docker
- 
 yum -y update
 yum install -y docker-engine-1.11.2
 
@@ -44,12 +39,12 @@ systemctl enable docker
  
 tee -a /etc/hosts << '__EOF__'
  
-211.249.63.201  mesos-boot
+211.249.63.201 mesos-boot
  
 175.158.15.45  mesos-master-01
 
-10.32.20.80     mesos-agent-01
-10.32.19.122     mesos-agent-02
+10.32.20.80    mesos-agent-01
+10.32.19.122   mesos-agent-02
 
 __EOF__
  
