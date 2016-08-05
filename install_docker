@@ -30,8 +30,6 @@ yum install -y docker-engine-1.11.2
 yum install -y yum-versionlock
 yum versionlock docker-engine
 
-yum clean all
-
 systemctl daemon-reload
 systemctl start docker
 
@@ -39,7 +37,7 @@ systemctl enable docker
  
 tee -a /etc/hosts << '__EOF__'
  
-192.168.0.6 mesos-boot
+192.168.0.6   mesos-boot
  
 192.168.0.143  mesos-master-01
 
@@ -51,4 +49,9 @@ __EOF__
 yum install -y tar xz unzip curl ipset nfs-utils
 yum clean all
  
+ #SELinux disable
 groupadd nogroup
+sed -i s/SELINUX=enforcing/SELINUX=permissive/g /etc/selinux/config
+reboot
+
+
