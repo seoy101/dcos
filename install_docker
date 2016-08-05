@@ -1,4 +1,8 @@
 #!/bin/bash
+
+yum upgrade --assumeyes --tolerant
+yum update --assumeyes
+
 #firewall disable
 systemctl stop firewalld && systemctl disable firewalld
 # add docker repo and install docker
@@ -23,9 +27,8 @@ cat > /etc/systemd/system/docker.service.d/override.conf << '__EOF__'
 ExecStart= 
 ExecStart=/usr/bin/docker daemon --storage-driver=overlay -H fd:// 
 __EOF__
- 
-yum -y update
-yum install -y docker-engine-1.11.2
+
+yum install --assumeyes --tolerant -y docker-engine-1.11.2
 
 yum install -y yum-versionlock
 yum versionlock docker-engine
