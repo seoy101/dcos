@@ -8,7 +8,7 @@ cat > genconf/ip-detect << '__EOF__'
 #!/usr/bin/env bash
 set -o nounset -o errexit
 export PATH=/usr/sbin:/usr/bin:$PATH
-echo $(ip addr show enp2s0 | grep -Eo '[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}' | head -1)
+echo $(ip addr show eth0 | grep -Eo '[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}' | head -1)
 __EOF__
 
 chmod 755 genconf/ip-detect
@@ -26,8 +26,6 @@ master_list:
 resolvers:
 - 8.8.4.4
 - 8.8.8.8
-superuser_password_hash:$6$rounds=656000$RtYnfkFXQodOBaLf$L.ACZ9iiX/skSQihcYdO1ENcOadtfg1BtqxzOX1ad2U6x7fWmwerhfve0zidIW60CjNe/ZLT4Mad7KuAEtZZs0
-superuser_username:root
 __EOF__
 
 bash dcos_generate_config.sh
