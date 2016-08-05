@@ -48,6 +48,8 @@ __EOF__
  
 yum install -y tar xz unzip curl ipset nfs-utils
 yum clean all
+
+yum upgrade -y
  
  #SELinux disable
 groupadd nogroup
