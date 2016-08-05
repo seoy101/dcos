@@ -1,8 +1,5 @@
 #!/bin/bash
 
-yum upgrade --assumeyes --tolerant
-yum update --assumeyes
-
 #firewall disable
 systemctl stop firewalld && systemctl disable firewalld
 # add docker repo and install docker
@@ -52,11 +49,10 @@ __EOF__
 yum install -y tar xz unzip curl ipset nfs-utils
 yum clean all
 
-yum upgrade -y
+yum upgrade --assumeyes --tolerant
+yum update --assumeyes
  
  #SELinux disable
 groupadd nogroup
 sed -i s/SELINUX=enforcing/SELINUX=permissive/g /etc/selinux/config
 reboot
-
-
