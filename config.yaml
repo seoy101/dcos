@@ -1,20 +1,14 @@
 ---
-agent_list:
-- <agent-private-ip-1>
-- <agent-private-ip-2>
-- <agent-private-ip-3>
-- <agent-private-ip-4>
-- <agent-private-ip-5>
-# Use this bootstrap_url value unless you have moved the DC/OS installer assets.
-bootstrap_url: file:///opt/dcos_install_tmp
-cluster_name: dcos-centos
+bootstrap_url: http://mesos-boot:8888
+cluster_name: dcos
+exhibitor_storage_backend: static
+ip_detect_filename: genconf/ip-detect
 master_discovery: static
 master_list:
-- <master-private-ip-1>
-- <master-private-ip-2>
-- <master-private-ip-3>
+- 192.168.0.1
 resolvers:
 - 8.8.4.4
 - 8.8.8.8
-ssh_port: 22
-ssh_user: root
+superuser_password_hash:$6$rounds=656000$RtYnfkFXQodOBaLf$L.ACZ9iiX/skSQihcYdO1ENcOadtfg1BtqxzOX1ad2U6x7fWmwerhfve0zidIW60CjNe/ZLT4Mad7KuAEtZZs0
+superuser_username:root
+
