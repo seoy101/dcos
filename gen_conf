@@ -26,6 +26,8 @@ master_list:
 resolvers:
 - 8.8.4.4
 - 8.8.8.8
+superuser_password_hash:$6$rounds=656000$RtYnfkFXQodOBaLf$L.ACZ9iiX/skSQihcYdO1ENcOadtfg1BtqxzOX1ad2U6x7fWmwerhfve0zidIW60CjNe/ZLT4Mad7KuAEtZZs0
+superuser_username:root
 __EOF__
 
 bash dcos_generate_config.sh
